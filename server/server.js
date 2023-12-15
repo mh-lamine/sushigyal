@@ -1,3 +1,7 @@
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config()
+}
+
 const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
@@ -8,7 +12,12 @@ const cors = require('cors')
 app.use(express.json())
 app.use(cors())
 
-mongoose.connect('mongodb+srv://mlaminsngom:ID0PRdv2OOep8PHh@merndb.nnrxhis.mongodb.net/sushigyal?retryWrites=true&w=majority')
+const indexRouter = require('./routes/index')
+
+mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true })
+const db = mongoose.connection
+db.on('error', (error) => console.log(error))
+db.once('open', () => console.log('Connected to database'))
 
 app.get('/getCategories', (req, res) => {
     CategorieModel.find({}).then((result) => {
@@ -33,6 +42,8 @@ app.get('/getMenus', (req, res) => {
 //     res.json(user)
 // })
 
-app.listen(3001, () => {
+app.use('/', indexRouter)
+
+app.listen(process.env.PORT || 3001, () => {
     console.log('server running on port 3001...')
 })
