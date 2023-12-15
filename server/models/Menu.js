@@ -5,7 +5,7 @@ const MenuSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    categorie: {
+    category: {
         type: String,
         required: true,
     },
@@ -19,5 +19,4 @@ const MenuSchema = new mongoose.Schema({
     }
 });
 
-const menuModel = mongoose.model('menu', MenuSchema, 'menu');
-module.exports = menuModel;
+module.exports = mongoose.model('menu', MenuSchema, 'menu');
