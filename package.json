@@ -1,0 +1,23 @@
+{
+  "name": "sushigyal",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "all": "concurrently \"cd server && npm run serve\" \"cd client && npm run dev\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mh-lamine/sushigyal.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mh-lamine/sushigyal/issues"
+  },
+  "homepage": "https://github.com/mh-lamine/sushigyal#readme",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
